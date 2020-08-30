@@ -17,10 +17,11 @@
     <p>
         <a href="/products">Back to product list</a>
     </p>
-    <form>
+    <form method="post">
+        <h3>Are you sure?</h3>
         <fieldset>
             <legend>Product information</legend>
-            <table>
+            <table class="table table-danger">
                 <tr>
                     <td>Name:</td>
                     <td>${requestScope["product"].getName()}</td>
@@ -38,7 +39,7 @@
 
                 <tr>
                 <td>Brand:</td>
-                <td>${requestScope["    product"].getBrand()}</td>
+                <td>${requestScope["product"].getBrand()}</td>
                 </tr>
 
                 <tr>

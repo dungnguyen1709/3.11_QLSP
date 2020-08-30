@@ -29,7 +29,7 @@
             <td>Delete</td>
         </tr>
 
-        <c:forEach items="${requestScope['products']}" var="product">
+        <c:forEach items='${requestScope["products"]}' var="product">
             <tr>
             <td><a href="/products?action=view&id=${product.getId()}">${product.getName()}</a> </td>
             <td>${product.getName()}</td>
