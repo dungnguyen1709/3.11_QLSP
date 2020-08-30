@@ -27,11 +27,29 @@ public class ProductServlet extends HttpServlet {
             case "create" :
                 addProduct(request,response);
                 break;
-            case "edit":
+            case "edit  ":
                 updateProduct(request,response);
+                break;
+            case "delete":
+                deleteProduct(request,response);
+                break;
+            default:
                 break;
 
         }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/error-404.jsp");
+        } else {
+            this.productService.remove(id);
+        }
+        response.sendRedirect("/products");
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -88,11 +106,29 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "view":
                 viewProduct(request,response);
+                break;
+            case "delete":
+                showFormDelete(request,response);
+                break;
             default:
                 listProduct(request,response);
                 break;
         }
 
+    }
+
+    private void showFormDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/error-404.jsp");
+        } else {
+            request.setAttribute("product",product);
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/product/delete.jsp");
+        }
+        dispatcher.forward(request,response);
     }
 
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -20,19 +20,19 @@
     <table>
         <tr>
             <td>Name:</td>
-            <td>${requestScope['product'].getName()}</td>
+            <td>${requestScope["product"].getName()}</td>
         </tr>
         <tr>
             <td>Price:</td>
-            <td>${requestScope['product'].getPrice()}</td>
+            <td>${requestScope["product"].getPrice()}</td>
         </tr>
         <tr>
             <td>Description:</td>
-            <td>${requestScope['product'].getDescription()}</td>
+            <td>${requestScope["product"].getDescription()}</td>
         </tr>
         <tr>
             <td>Brand:</td>
-            <td>${requestScope['product'].getBrand()}</td>
+            <td>${requestScope["product"].getBrand()}</td>
         </tr>
     </table>
 </div>
