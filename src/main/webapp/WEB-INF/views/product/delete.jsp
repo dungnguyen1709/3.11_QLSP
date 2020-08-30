@@ -23,6 +23,10 @@
             <legend>Product information</legend>
             <table class="table table-danger">
                 <tr>
+                    <td>ID:</td>
+                    <td>${requestScope["product"].getId()}</td>
+                </tr>
+                <tr>
                     <td>Name:</td>
                     <td>${requestScope["product"].getName()}</td>
                 </tr>

@@ -17,7 +17,7 @@
 <div class="container">
     <h1>Edit product</h1>
     <p>
-        <c:if test="${requestScope['message']!= null}">
+        <c:if test="${requestScope['message'] != null}">
             <span class="message">${requestScope['message']}</span>
         </c:if>
     </p>
@@ -29,6 +29,10 @@
         <fieldset>
             <legend>Product information</legend>
             <table>
+                <tr>
+                    <td>ID:</td>
+                    <td><input type="text" name="id" id="id" value="${requestScope['product'].getId()}"></td>
+                </tr>
                 <tr>
                     <td>Name:</td>
                     <td><input type="text" name="name" id="name" value="${requestScope['product'].getName()}"></td>
