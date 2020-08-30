@@ -27,11 +27,40 @@ public class ProductServlet extends HttpServlet {
             case "create" :
                 addProduct(request,response);
                 break;
+            case "edit":
+                updateProduct(request,response);
+                break;
+
         }
     }
 
-    private void addProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
+        String name =request.getParameter("name");
+        double price = Double.parseDouble(request.getParameter("price"));
+        String description =request.getParameter("description");
+        String brand =request.getParameter("brand");
+
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/error-404.jsp");
+        } else {
+            product.setName(name);
+            product.setPrice(price);
+            product.setDescription(description);
+            product.setBrand(brand);
+            this.productService.update(id,product);
+            request.setAttribute("product",product);
+            request.setAttribute("message","Product information was updated");
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/product/edit.jsp");
+        }
+        dispatcher.forward(request,response);
+    }
+
+    private void addProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = (int)(Math.random()* 1000);
         String name =request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         String description =request.getParameter("description");
@@ -54,11 +83,44 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showFormCreate(request,response);
                 break;
+            case "edit":
+                showFormEdit(request,response);
+                break;
+            case "view":
+                viewProduct(request,response);
             default:
                 listProduct(request,response);
                 break;
         }
 
+    }
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/error-404.jsp");
+        } else {
+            request.setAttribute("product",product);
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/product/view.jsp");
+        }
+        dispatcher.forward(request,response);
+    }
+
+    private void showFormEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/error-404.jsp");
+        } else {
+            request.setAttribute("product",product);
+            dispatcher = request.getRequestDispatcher("WEB-INF/views/product/edit.jsp");
+        }
+        dispatcher.forward(request,response);
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
