@@ -21,7 +21,7 @@
 
     <table class="table table-hover">
         <tr>
-            <td>ID</td>
+            <td>Id</td>
             <td>Name</td>
             <td>Price</td>
             <td>Description</td>
@@ -32,13 +32,13 @@
 
         <c:forEach items='${requestScope["products"]}' var="product">
             <tr>
-            <td>${product.getId()}</td>
-            <td><a href="/products?action=view&id=${product.getId()}">${product.getName()}</a> </td>
+                <td>${product.getId()}</td>
+            <td><a href="/products?action=view&id=${product.getId()}">${product.getName()}</a></td>
             <td>${product.getPrice()}</td>
             <td>${product.getDescription()}</td>
             <td>${product.getBrand()}</td>
-            <td><a href="/products?action=edit&id=${product.getId()}">Edit</a> </td>
-            <td><a href="/products?action=delete&id=${product.getId()}">Delete</a> </td>
+             <td><a href="/products?action=edit&id=${product.getId()}">Edit</a> </td>
+            <td><a href="/products?action=delete&id=${product.getId()}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -30,9 +30,10 @@
             <legend>Product information</legend>
             <table>
                 <tr>
-                    <td>ID:</td>
+                    <td>Id:</td>
                     <td><input type="text" name="id" id="id" value="${requestScope['product'].getId()}"></td>
                 </tr>
+
                 <tr>
                     <td>Name:</td>
                     <td><input type="text" name="name" id="name" value="${requestScope['product'].getName()}"></td>

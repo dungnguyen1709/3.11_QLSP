@@ -33,9 +33,10 @@
             <legend>Product information</legend>
             <table>
                 <tr>
-                    <td>ID:</td>
+                    <td>Id:</td>
                     <td><input type="text" name="id" id="id"></td>
                 </tr>
+
                 <tr>
                     <td>Name:</td>
                     <td><input type="text" name="name" id="name"></td>
