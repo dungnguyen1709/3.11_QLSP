@@ -19,24 +19,24 @@
     </p>
     <table>
         <tr>
-            <td>Id:</td>
+            <td>ID :</td>
             <td>${requestScope["product"].getId()}</td>
         </tr>
 
         <tr>
-            <td>Name:</td>
+            <td>Name :</td>
             <td>${requestScope["product"].getName()}</td>
         </tr>
         <tr>
-            <td>Price:</td>
+            <td>Price :</td>
             <td>${requestScope["product"].getPrice()}</td>
         </tr>
         <tr>
-            <td>Description:</td>
+            <td>Description :</td>
             <td>${requestScope["product"].getDescription()}</td>
         </tr>
         <tr>
-            <td>Brand:</td>
+            <td>Brand :</td>
             <td>${requestScope["product"].getBrand()}</td>
         </tr>
     </table>

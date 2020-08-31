@@ -78,7 +78,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = (int) (Math.random()*1000);
+        int id = Integer.parseInt(request.getParameter("id"));
         String name =request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         String description =request.getParameter("description");
